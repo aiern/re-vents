@@ -8,6 +8,7 @@ export default function EventForm({
   setEvents,
   createEvent,
   selectedEvent,
+  updateEvent
 }) {
   const initialValues = selectedEvent ?? {
     title: "",
@@ -21,6 +22,8 @@ export default function EventForm({
   const [values, setValues] = useState(initialValues);
 
   function handleFormSubmit() {
+    selectedEvent ? updateEvent({...selectedEvent}, ...values) :
+
     createEvent({
       ...values,
       id: cuid(),
@@ -28,7 +31,7 @@ export default function EventForm({
       attendees: [],
       hostPhotoURL: "/assets/user.png",
     });
-    // setFormOpen(false)
+    setFormOpen(false)
   }
 
   function handleInputChange(e) {
