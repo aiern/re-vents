@@ -8,7 +8,7 @@ export default function EventForm({
   setEvents,
   createEvent,
   selectedEvent,
-  updateEvent
+  updateEvent,
 }) {
   const initialValues = selectedEvent ?? {
     title: "",
@@ -22,16 +22,16 @@ export default function EventForm({
   const [values, setValues] = useState(initialValues);
 
   function handleFormSubmit() {
-    selectedEvent ? updateEvent({...selectedEvent}, ...values) :
-
-    createEvent({
-      ...values,
-      id: cuid(),
-      hostedBy: "Bob",
-      attendees: [],
-      hostPhotoURL: "/assets/user.png",
-    });
-    setFormOpen(false)
+    selectedEvent
+      ? updateEvent({ ...selectedEvent, ...values })
+      : createEvent({
+          ...values,
+          id: cuid(),
+          hostedBy: "Bob",
+          attendees: [],
+          hostPhotoURL: "/assets/user.png",
+        });
+    setFormOpen(false);
   }
 
   function handleInputChange(e) {
@@ -42,7 +42,9 @@ export default function EventForm({
   return (
     <Segment clearing>
       <Header
-        content={selectedEvent ? 'Edit : ' + selectedEvent.title : "Create new event"}
+        content={
+          selectedEvent ? "Edit : " + selectedEvent.title : "Create new event"
+        }
       />
       <Form onSubmit={handleFormSubmit}>
         <FormField>

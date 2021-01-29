@@ -16,16 +16,26 @@ export default function EventDashboard({
     setEvents([...events, event]);
   }
 
-  function handleUpdatedEvent(updatedEvent){
-    setEvents(events.map(evt => evt.id === updatedEvent.id ? updatedEvent : evt))
-    selectEvent(null)
+  function handleUpdatedEvent(updatedEvent) {
+    setEvents(
+      events.map((evt) => (evt.id === updatedEvent.id ? updatedEvent : evt))
+    );
+    selectEvent(null);
     // setFormOpen(false)
+  }
+
+  function handleDeleteEvent(eventId) {
+    setEvents(events.filter((evt) => evt.id !== eventId));
   }
 
   return (
     <Grid>
       <GridColumn width={10}>
-        <EventList events={events} selectEvent={selectEvent} />
+        <EventList
+          events={events}
+          selectEvent={selectEvent}
+          deleteEvent={handleDeleteEvent}
+        />
       </GridColumn>
 
       <GridColumn width={6}>
