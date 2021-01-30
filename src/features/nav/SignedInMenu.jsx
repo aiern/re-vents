@@ -9,7 +9,7 @@ import {
   DropdownItem,
 } from "semantic-ui-react";
 
-export default function SignedInMenu() {
+export default function SignedInMenu({setAuthenticated}) {
   return (
     <MenuItem position='right'>
       <Image avatar spaced='right' src='/assets/user.png' />
@@ -23,7 +23,7 @@ export default function SignedInMenu() {
             icon='plus'
           />
           <DropdownItem text='My Profile' icon='user' />
-          <DropdownItem text='Sign Out' icon='power' />
+          <DropdownItem onClick={()=>setAuthenticated(false)} text='Sign Out' icon='power' />
         </DropdownMenu>
       </Dropdown>
     </MenuItem>
