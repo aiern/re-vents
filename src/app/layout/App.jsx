@@ -29,7 +29,7 @@ function App() {
         <Route exact path='/' component={HomePage} />
         <Route exact path='/events' component={EventDashboard} />
         <Route path='/events/:id' component={EventDetailedPage} />
-        <Route path='/createEvent' component={EventForm } />
+        <Route path='/createEvent' component={EventForm} />
       </Container>
     </div>
   );
