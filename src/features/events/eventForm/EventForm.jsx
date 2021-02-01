@@ -2,6 +2,7 @@ import { computeHeadingLevel } from "@testing-library/react";
 import React, { useState } from "react";
 import { Button, Form, FormField, Header, Segment } from "semantic-ui-react";
 import cuid from "cuid";
+import { Link } from "react-router-dom";
 
 export default function EventForm({
   setFormOpen,
@@ -104,7 +105,7 @@ export default function EventForm({
 
         <Button type='submit' floated='right' positive content='Submit' />
         <Button
-          onClick={() => setFormOpen(false)}
+          as={Link} to='/events'
           type='submit'
           floated='right'
           content='Cancel'
